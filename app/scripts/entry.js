@@ -2,17 +2,21 @@
 import './../styles/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, hashHistory, Link} from 'react-router';
+import Header from './components/header';
+import Voted from './components/voteResults';
+import Search from './components/searchResults';
 
-// import a module from another file.
-import tiy from './app.js';
 
-// Looks like the imported module was a function, because here we're executing it!
-tiy();
 
-const TestComponent = React.createClass({
-	render: function() {
-		return <h1>Test~</h1>;
-	}
-});
+const router = (
+	<Router history={hashHistory}>
+		<Route path="/search" component={Search}/>
+		<Route path="/voted" component={Voted}/>
+	</Router>
+)
 
-ReactDOM.render(<TestComponent />, document.querySelector('main'));
+ReactDOM.render(router, document.querySelector('main'));
+
+
+// ReactDOM.render(<TestComponent />, document.querySelector('main'));
